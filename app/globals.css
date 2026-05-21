@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+:root {
+  /* Light Mode Colors */
+  --background: #ffffff; /* White background */
+  --foreground: #0f172a; /* Dark slate text */
+  --apple-blue: #16a34a; /* Light green accent */
+  --apple-gray-light: #f8fafc;
+  --apple-gray-border: #e2e8f0;
+  --apple-card-bg: rgba(255, 255, 255, 0.85);
+  --apple-card-border: rgba(0, 0, 0, 0.06);
+  --brand-yellow: #ca8a04; /* Medium yellow accent */
+  --brand-yellow-light: #fef9c3; /* Light yellow background */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark Mode Colors (Original dark theme base) */
+    --background: #09090b; /* Black/zinc-950 background */
+    --foreground: #f4f4f5; /* Off-white text */
+    --apple-blue: #22c55e; /* Bright light green accent */
+    --apple-gray-light: #18181b; /* Zinc-900 */
+    --apple-gray-border: #27272a; /* Zinc-800 */
+    --apple-card-bg: rgba(24, 24, 27, 0.75); /* Dark translucent panels */
+    --apple-card-border: rgba(255, 255, 255, 0.08);
+    --brand-yellow: #eab308; /* Bright yellow accent */
+    --brand-yellow-light: rgba(234, 179, 8, 0.15); /* Translucent yellow background */
+  }
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-apple-blue: var(--apple-blue);
+  --color-apple-gray-light: var(--apple-gray-light);
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-yellow-light: var(--brand-yellow-light);
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Custom yellow utilities linked to dynamic light/dark variables */
+.text-brand-yellow {
+  color: var(--brand-yellow);
+}
+.bg-brand-yellow-light {
+  background-color: var(--brand-yellow-light);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Apple transitions and effects */
+.glass-panel {
+  background: var(--apple-card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--apple-card-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-slide-up-fade {
+  animation: slideUpFade 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Custom OTP Input Spacing */
+.otp-input-shadow:focus {
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.15); /* Light green tint ring */
+}
